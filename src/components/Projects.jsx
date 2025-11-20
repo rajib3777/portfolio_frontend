@@ -17,7 +17,7 @@ export default function Projects({ compact = false }) {
   const visible = compact ? projects.slice(0, 4) : projects;
 
   return (
-    <section className="py-10 border-t border-cyan-500/20">
+    <section id="projects" className="py-10 border-t border-cyan-500/20">
       <SectionTitle
         eyebrow="Projects"
         title="Selected work."
