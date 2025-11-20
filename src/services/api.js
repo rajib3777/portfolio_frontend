@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const API_BASE = "https://portfolio-backend-4gnj.onrender.com";
+// Use env var if exists, else fallback to production
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://portfolio-backend-4gnj.onrender.com";
 
+// Global axios instance
 export const api = axios.create({
   baseURL: API_BASE,
 });
@@ -25,6 +27,7 @@ export const resumeDownloadUrl = `${API_BASE}/api/resume/dynamic/`;
 export const sendContactMessage = (payload) =>
   api.post("/api/contact/", payload);
 
-
-export const fetchSocialLinks = () =>
-  axios.get(`${API}/api/social-links/`);
+// ---- Social Links ----
+// CHANGED: API → API_BASE + axios instance removed
+export const fetchSocialLinks = () => 
+  api.get("/api/social-links/");
